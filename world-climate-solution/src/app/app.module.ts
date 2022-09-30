@@ -12,6 +12,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
 import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 import { HeaderComponent } from './components/header/header.component';
+
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
