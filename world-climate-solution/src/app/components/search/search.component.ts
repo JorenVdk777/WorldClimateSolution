@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { City } from 'src/app/interfaces/city';
+import { City } from 'src/app/interfaces/citystats';
 
 @Component({
   selector: 'app-search',
