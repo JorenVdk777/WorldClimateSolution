@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net;
 using WorldClimateSolution.gRPC.Services;
 
@@ -23,6 +24,19 @@ var airpolWaterPol = File.ReadAllLines("airpolWaterPol").Skip(1)
         WaterQuality = Convert.ToDouble(x[3].Trim().Replace('.',',')),
         AirQuality = Convert.ToDouble(x[4].Trim().Replace('.',','))
     }).Where(x => x.AirQuality is not (0 or 100) && x.WaterQuality is not (0 or 100)).ToList();
+
+webClient.DownloadFile("https://raw.githubusercontent.com/JorenVdk777/WorldClimateSolution/rlaevaert/BackEndAdded/WorldClimateSolutionAPI/WorldClimateSolution.gRPC/greenAreaPerCapita_DezeGerbuikenRobin.csv", "green");
+var green = File.ReadAllLines("green").Skip(1)
+    .Select(x => x.Split(",").ToList())
+    .Select(x => new GreenPerCapita
+    {
+        Place = x[0],
+        Year = Convert.ToInt32(x[1]),
+        Green = Convert.ToDouble(x[2].Replace(".", ","))
+    })
+    .GroupBy(x => x.Place)
+    .ToList();
+
 Memory.Overview = new CityStatsOverview()
 {
     CityStats = airpolWaterPol,
@@ -38,8 +52,15 @@ Memory.Overview = new CityStatsOverview()
 
 
 
+Memory.GreenPerCapita = green.Select(x => new GreenPerCapitaOverview()
+{
+    Place = x.Key,
+    Green = x.Select(y => Tuple.Create(y.Year, y.Green)).ToList()
+}).ToList();
+
 // Configure the HTTP request pipeline.
 app.MapGet("/City-Stats/Overview", () => Memory.Overview);
+app.MapGet("/City-Stats/Green", () => Memory.GreenPerCapita);
 
 app.Run();
 
@@ -54,6 +75,19 @@ string GetCSV(string url)
     sr.Close();
 
     return results;
+}
+
+public class GreenPerCapitaOverview
+{
+    public string Place { get; set; }
+    public List<Tuple<int, double>> Green { get; set; }  
+}
+
+public class GreenPerCapita
+{
+    public string Place { get; set; } 
+    public int Year { get; set; }
+    public double Green { get; set; }
 }
 
 public class CityStatsOverview
@@ -79,7 +113,8 @@ public class CityStats
     public double WaterQuality { get; set; }
 }
 
-public static class Memory
+public static class Memory  
 {
     public static CityStatsOverview Overview { get; set; }
+    public static List<GreenPerCapitaOverview> GreenPerCapita { get; set; }
 }
