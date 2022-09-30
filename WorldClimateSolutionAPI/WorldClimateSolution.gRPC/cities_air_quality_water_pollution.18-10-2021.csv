@@ -1,6 +1,6 @@
 "City", "Region", "Country", "AirQuality", "WaterPollution"
 "New York City", "New York", "United States of America", 46.81603773584906, 49.504950495049506
-"Washington, D.C.", "District of Columbia", "United States of America", 66.12903225806451, 49.107142857142854
+"Washington D.C.", "District of Columbia", "United States of America", 66.12903225806451, 49.107142857142854
 "San Francisco", "California", "United States of America", 60.51401869158879, 43
 "Berlin", "", "Germany", 62.3641304347826, 28.61271676300578
 "Los Angeles", "California", "United States of America", 36.62162162162163, 61.29943502824858
