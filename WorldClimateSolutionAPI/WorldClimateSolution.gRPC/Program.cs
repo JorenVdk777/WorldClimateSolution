@@ -37,7 +37,7 @@ var green = File.ReadAllLines("green").Skip(1)
     {
         Place = x[0],
         Year = Convert.ToInt32(x[1]),
-        Green = Convert.ToDouble(x[2].Replace(".", ","))
+        Green = Convert.ToDouble(x[2].Replace(".", ",")),
     })
     .GroupBy(x => x.Place)
     .ToList();
@@ -86,6 +86,7 @@ public class GreenPerCapitaOverview
 {
     public string Place { get; set; }
     public List<Tuple<int, double>> Green { get; set; }
+    
 }
 
 public class GreenPerCapita
@@ -93,6 +94,10 @@ public class GreenPerCapita
     public string Place { get; set; }
     public int Year { get; set; }
     public double Green { get; set; }
+    public double Average { get; set; }
+    public double Min { get; set; }
+    public double Max { get; set; }
+
 }
 
 public class CityStatsOverview
