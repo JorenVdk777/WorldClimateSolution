@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldClimateSolution.gRPC", "WorldClimateSolution.gRPC\WorldClimateSolution.gRPC.csproj", "{0DB4CE50-7BF9-4872-9812-7EBADA9938E7}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6077DA56-9D61-4A2E-8E91-C725FC8CC5B8}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DB4CE50-7BF9-4872-9812-7EBADA9938E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB4CE50-7BF9-4872-9812-7EBADA9938E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB4CE50-7BF9-4872-9812-7EBADA9938E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB4CE50-7BF9-4872-9812-7EBADA9938E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
