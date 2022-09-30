@@ -27,6 +27,7 @@ export class SearchComponent implements OnInit {
   }
 
   handleClick() {
+    // this.onCityChange.emit(this.city);
     // this.getCities().subscribe((data: any) => {
     //   this.onCityChange.emit(data);
     // });

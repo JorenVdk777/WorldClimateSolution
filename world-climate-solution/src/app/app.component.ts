@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'world-climate-solution';
+
+  onCityChange(e: any) {
+    console.log(e);
+  }
 }
