@@ -7,7 +7,7 @@
     <list default="true" id="7e13fc6f-fc3e-47ce-9ca4-a66996f5e79d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WorldClimateSolutionAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WorldClimateSolutionAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WorldClimateSolution.gRPC/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WorldClimateSolution.gRPC/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorldClimateSolution.gRPC/cities_air_quality_water_pollution.18-10-2021.csv" beforeDir="false" afterPath="$PROJECT_DIR$/WorldClimateSolution.gRPC/cities_air_quality_water_pollution.18-10-2021.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorldClimateSolution.gRPC/Services/GreeterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WorldClimateSolution.gRPC/Services/GreeterService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +22,11 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/198a6261cebc324728dcc4c178edc5f2894123f711722c80e8557cbfd27651/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6c782fd924aeee61b96ebf0bee12814bdec2557d073692e238cd4c8b98d54fc/WebClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7a1ad32abaee44480b66c2c1fcee9628cca92a4cd272eced5781564201180/Number.Parsing.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd6261fae937ba8f9a94e40e09319529f8a77ea7c5438cb971c868a26cb986/Select.SpeedOpt.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3b9684f72bc2cc435eb694f7cc86eca8c240d2d1cefa1e8697a61f1f2f27f/SafeFileHandle.Windows.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -74,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664529974094</updated>
       <workItem from="1664529981072" duration="175000" />
-      <workItem from="1664530189266" duration="3511000" />
+      <workItem from="1664530189266" duration="5760000" />
     </task>
     <servers />
   </component>
@@ -101,30 +103,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/WorldClimateSolution.gRPC/Program.cs</url>
-          <line>22</line>
-          <properties documentPath="C:\Users\robin\Documents\WorldClimateSolution\WorldClimateSolutionAPI\WorldClimateSolution.gRPC\Program.cs" initialLine="21" containingFunctionPresentation="">
+          <url>file://$PROJECT_DIR$/WorldClimateSolution.gRPC/Services/GreeterService.cs</url>
+          <line>15</line>
+          <properties documentPath="C:\Users\robin\Documents\WorldClimateSolution\WorldClimateSolutionAPI\WorldClimateSolution.gRPC\Services\GreeterService.cs" initialLine="15" containingFunctionPresentation="method 'SayHello'">
             <startOffsets>
-              <option value="1364" />
+              <option value="410" />
             </startOffsets>
             <endOffsets>
-              <option value="1401" />
+              <option value="437" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/WorldClimateSolution.gRPC/Program.cs</url>
-          <line>18</line>
-          <properties documentPath="C:\Users\robin\Documents\WorldClimateSolution\WorldClimateSolutionAPI\WorldClimateSolution.gRPC\Program.cs" initialLine="18" containingFunctionPresentation="">
-            <startOffsets>
-              <option value="783" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1017" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
