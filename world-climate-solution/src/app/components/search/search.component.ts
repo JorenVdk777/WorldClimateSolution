@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
+import { City } from 'src/app/interfaces/city';
 
 @Component({
   selector: 'app-search',
@@ -6,15 +9,26 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   city!: string;
+  testData!: any;
+  cities$!: Observable<City[]>;
+  cities!: City[];
 
   @Output() onCityChange: EventEmitter<string> = new EventEmitter<string>();
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cities$ = this.httpClient.get<City[]>('/courses.json');
+  }
+
+  getCities() {
+    return this.httpClient.get('url');
+  }
 
   handleClick() {
-    this.onCityChange.emit(this.city);
+    // this.getCities().subscribe((data: any) => {
+    //   this.onCityChange.emit(data);
+    // });
   }
 }
