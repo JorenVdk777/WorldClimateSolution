@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Net;
+using System.Security;
 using WorldClimateSolution.gRPC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,19 +14,23 @@ builder.Services.AddGrpc();
 var app = builder.Build();
 
 WebClient webClient = new();
-webClient.DownloadFile("https://raw.githubusercontent.com/JorenVdk777/WorldClimateSolution/rlaevaert/BackEndAdded/WorldClimateSolutionAPI/WorldClimateSolution.gRPC/cities_air_quality_water_pollution.18-10-2021.csv", "airpolWaterPol");
+webClient.DownloadFile(
+    "https://raw.githubusercontent.com/JorenVdk777/WorldClimateSolution/rlaevaert/BackEndAdded/WorldClimateSolutionAPI/WorldClimateSolution.gRPC/cities_air_quality_water_pollution.18-10-2021.csv",
+    "airpolWaterPol");
 var airpolWaterPol = File.ReadAllLines("airpolWaterPol").Skip(1)
     .Select(x => x.Split(',').ToList())
     .Select(x => new CityStats()
     {
-        City = x[0],
-        Country = x[2],
-        Region=x[1],
-        WaterQuality = Convert.ToDouble(x[3].Trim().Replace('.',',')),
-        AirQuality = Convert.ToDouble(x[4].Trim().Replace('.',','))
+        City = x[0].Replace("\"", "").Trim(),
+        Country = x[2].Replace("\"", "").Trim(),
+        Region = x[1].Replace("\"", "").Trim(),
+        WaterQuality = Convert.ToDouble(x[3].Trim().Replace('.', ',')),
+        AirQuality = Convert.ToDouble(x[4].Trim().Replace('.', ','))
     }).Where(x => x.AirQuality is not (0 or 100) && x.WaterQuality is not (0 or 100)).ToList();
 
-webClient.DownloadFile("https://raw.githubusercontent.com/JorenVdk777/WorldClimateSolution/rlaevaert/BackEndAdded/WorldClimateSolutionAPI/WorldClimateSolution.gRPC/greenAreaPerCapita_DezeGerbuikenRobin.csv", "green");
+webClient.DownloadFile(
+    "https://raw.githubusercontent.com/JorenVdk777/WorldClimateSolution/rlaevaert/BackEndAdded/WorldClimateSolutionAPI/WorldClimateSolution.gRPC/greenAreaPerCapita_DezeGerbuikenRobin.csv",
+    "green");
 var green = File.ReadAllLines("green").Skip(1)
     .Select(x => x.Split(",").ToList())
     .Select(x => new GreenPerCapita
@@ -46,11 +51,11 @@ Memory.Overview = new CityStatsOverview()
     MinWaterQuality = airpolWaterPol.Min(x => x.WaterQuality),
     MaxAirQuality = airpolWaterPol.Max(x => x.AirQuality),
     MaxWaterQuality = airpolWaterPol.Max(x => x.WaterQuality),
-    MedianAirQuality = airpolWaterPol.OrderBy(x => x.AirQuality).Skip((int) Math.Floor((double) airpolWaterPol.Count/2)).First().AirQuality,
-    MedianWaterQuality = airpolWaterPol.OrderBy(x => x.WaterQuality).Skip((int) Math.Floor((double) airpolWaterPol.Count/2)).First().WaterQuality,
+    MedianAirQuality = airpolWaterPol.OrderBy(x => x.AirQuality)
+        .Skip((int) Math.Floor((double) airpolWaterPol.Count / 2)).First().AirQuality,
+    MedianWaterQuality = airpolWaterPol.OrderBy(x => x.WaterQuality)
+        .Skip((int) Math.Floor((double) airpolWaterPol.Count / 2)).First().WaterQuality,
 };
-
-
 
 Memory.GreenPerCapita = green.Select(x => new GreenPerCapitaOverview()
 {
@@ -67,8 +72,8 @@ app.Run();
 
 string GetCSV(string url)
 {
-    HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-    HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+    HttpWebRequest req = (HttpWebRequest) WebRequest.Create(url);
+    HttpWebResponse resp = (HttpWebResponse) req.GetResponse();
 
     StreamReader sr = new StreamReader(resp.GetResponseStream());
     string results = sr.ReadToEnd();
@@ -80,12 +85,12 @@ string GetCSV(string url)
 public class GreenPerCapitaOverview
 {
     public string Place { get; set; }
-    public List<Tuple<int, double>> Green { get; set; }  
+    public List<Tuple<int, double>> Green { get; set; }
 }
 
 public class GreenPerCapita
 {
-    public string Place { get; set; } 
+    public string Place { get; set; }
     public int Year { get; set; }
     public double Green { get; set; }
 }
@@ -101,9 +106,8 @@ public class CityStatsOverview
     public double MinWaterQuality { get; set; }
     public double MedianWaterQuality { get; set; }
     public double MedianAirQuality { get; set; }
-    
-    
 }
+
 public class CityStats
 {
     public string City { get; set; }
@@ -113,7 +117,7 @@ public class CityStats
     public double WaterQuality { get; set; }
 }
 
-public static class Memory  
+public static class Memory
 {
     public static CityStatsOverview Overview { get; set; }
     public static List<GreenPerCapitaOverview> GreenPerCapita { get; set; }
