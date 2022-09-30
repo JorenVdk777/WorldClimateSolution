@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { City } from 'src/app/interfaces/citystats';
+import { CityStatsOverview } from 'src/app/interfaces/citystatsoverview';
+import { ApiCallerService } from 'src/app/services/api-caller.service';
 
 @Component({
   selector: 'app-search',
@@ -9,24 +10,21 @@ import { City } from 'src/app/interfaces/citystats';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private apiService: ApiCallerService) {}
 
   city!: string;
   testData!: any;
-  cities$!: Observable<City[]>;
-  cities!: City[];
 
   @Output() onCityChange: EventEmitter<string> = new EventEmitter<string>();
 
-  ngOnInit(): void {
-    this.cities$ = this.httpClient.get<City[]>('/courses.json');
-  }
+  ngOnInit(): void {}
 
-  getCities() {
-    return this.httpClient.get('url');
-  }
+  getCities() {}
 
   handleClick() {
+    this.apiService.getData().subscribe((value) => {
+      console.log(value);
+    });
     // this.onCityChange.emit(this.city);
     // this.getCities().subscribe((data: any) => {
     //   this.onCityChange.emit(data);
