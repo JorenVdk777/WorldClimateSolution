@@ -8,6 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
 
@@ -40,6 +50,7 @@ Memory.Overview = new CityStatsOverview()
 
 // Configure the HTTP request pipeline.
 app.MapGet("/City-Stats/Overview", () => Memory.Overview);
+app.UseCors();
 
 app.Run();
 

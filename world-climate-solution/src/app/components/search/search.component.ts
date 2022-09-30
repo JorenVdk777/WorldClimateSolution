@@ -23,11 +23,7 @@ export class SearchComponent implements OnInit {
 
   handleClick() {
     this.apiService.getData().subscribe((value) => {
-      console.log(value);
+      this.apiService.apiData.next(value);
     });
-    // this.onCityChange.emit(this.city);
-    // this.getCities().subscribe((data: any) => {
-    //   this.onCityChange.emit(data);
-    // });
   }
 }
